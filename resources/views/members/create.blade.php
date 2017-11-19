@@ -19,16 +19,20 @@
             </div>
         </div>
     </div>
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+
+    <?php if (count($errors)) { ?>
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    <?php } else { ?>
+        <div class="alert alert-danger" id="area_show_err" style="display: none"></div>
+    <?php } ?>
+
     {{ Form::open(array('route' => 'members.store','method'=>'POST')) }}
         {{csrf_field()}}
         @include('members.form')

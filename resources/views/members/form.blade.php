@@ -17,6 +17,20 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
+            <strong>Password:</strong>
+            {{--{{ Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) }}--}}
+            <input name="password" id="password" class="form-control" placeholder="Password" type="password" value="<?php if (isset($member)) echo $member->password; ?>"/>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Re-Password:</strong>
+            {{--{{ Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) }}--}}
+            <input onchange="HungnmController.checkRePassword(this);" id="repassword" name="repassword" class="form-control" placeholder="Re-Password" type="password" value=""/>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
             <strong>Email:</strong>
 {{--            {{ Form::email('email', null, array('placeholder' => 'Email','class' => 'form-control')) }}--}}
             <input type="text" name="email" class="form-control" placeholder="Email" value="<?php if (isset($member)) echo $member->email; ?>"/>
